@@ -97,7 +97,7 @@ export default class Browser extends React.PureComponent {
         const { isBrowsingControlled, coverRef, set, onBrowsing, hideOnScroll, coverVisible, presetIsDesktop } = this.getPropsWithEnv()
         const { show, page, pageIsCover } = this.state
         if (!show) {
-            window.addEventListener('keydown', this.handleKeyDown)
+            window.addEventListener('keydown', this.handleKeyDown, true)
             hideOnScroll && window.addEventListener('scroll', this.handleScroll)
             window.requestAnimationFrame(() => {
                 this.setState({ show:true, zoom:false, rotate:0, }, () => {
@@ -111,7 +111,7 @@ export default class Browser extends React.PureComponent {
         const { isBrowsingControlled, coverRef, set, onBrowsing, hideOnScroll, coverVisible, presetIsMobile, presetIsDesktop } = this.getPropsWithEnv()
         const { show, page, pageIsCover } = this.state
         if (show || force) {
-            window.removeEventListener('keydown', this.handleKeyDown)
+            window.removeEventListener('keydown', this.handleKeyDown, true)
             hideOnScroll && window.removeEventListener('scroll', this.handleScroll)
             !pageIsCover && !coverVisible && showCover(coverRef, set, page)
             this.setState({ show:false, zoom:false, rotate:0 }, () => setTimeout(() => {
@@ -136,21 +136,25 @@ export default class Browser extends React.PureComponent {
             case 27: // Escape
                 // 退出
                 e.preventDefault()
+                e.stopPropagation()
                 hotKey.close && (zoom ? this.handleToggleZoom() : outBrowsing())
                 break
             case 32: // SpaceBar
                 // 缩放
                 e.preventDefault()
+                e.stopPropagation()
                 hotKey.zoom && this.handleToggleZoom()
                 break
             case 37: // ArrowLeft
                 // 上一张
                 e.preventDefault()
+                e.stopPropagation()
                 !(!loop && page===0) && !zoom && hotKey.flip && this.handleToPrevPage()
                 break
             case 39: // ArrowRight
                 // 下一张
                 e.preventDefault()
+                e.stopPropagation()
                 !(!loop && page===set.length-1) && !zoom && hotKey.flip && this.handleToNextPage()
                 break
             default:

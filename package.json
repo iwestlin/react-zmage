@@ -1,6 +1,6 @@
 {
   "name": "react-zmage",
-  "version": "0.8.5-beta.30",
+  "version": "0.8.5-beta.31",
   "description": "A scalable image container",
   "keywords": [
     "react",
@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Caldis/react-zmage.git"
+    "url": "https://github.com/iwestlin/react-zmage.git"
   },
   "author": "caldis",
   "license": "MIT",

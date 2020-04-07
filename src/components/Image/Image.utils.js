@@ -93,7 +93,6 @@ export const getBrowsingStyle = (props, context, imageRef) => {
     const { radius, edge, rotate } = context
     const { naturalWidth, naturalHeight } = imageRef.current
     const scale = calcFitScale(naturalWidth, naturalHeight, edge)
-    console.log('getBrowsingStyle', scale)
     return {
         _type: 'browsing',
         x: 0,

@@ -1747,7 +1747,6 @@ var Image_utils_getBrowsingStyle = function getBrowsingStyle(props, context, ima
       naturalWidth = _imageRef$current.naturalWidth,
       naturalHeight = _imageRef$current.naturalHeight;
   var scale = calcFitScale(naturalWidth, naturalHeight, edge);
-  console.log('getBrowsingStyle', scale);
   return {
     _type: 'browsing',
     x: 0,
